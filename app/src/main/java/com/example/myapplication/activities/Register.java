@@ -56,7 +56,28 @@ public class Register extends AppCompatActivity {
         signup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Regist();
+                if(name_text_input.getText().toString().isEmpty() ||
+                        contact_text_input.getText().toString().isEmpty() ||
+                        email_text_input.getText().toString().isEmpty() ||
+                        password_text_input.getText().toString().isEmpty() ||
+                        contact_text_input.getText().toString().length() < 10){
+                    if (name_text_input.getText().toString().isEmpty())
+                        name_text_input.setError("Missing Name");
+                    if (contact_text_input.getText().toString().isEmpty())
+                        contact_text_input.setError("Missing Contact");
+                    else {
+                        if (contact_text_input.getText().toString().length() < 10)
+                            contact_text_input.setError("Missing Digits");
+                    }
+                    if (email_text_input.getText().toString().isEmpty())
+                        email_text_input.setError("Missing Email");
+                    if (password_text_input.getText().toString().isEmpty())
+                        password_text_input.setError("Missing Password");
+                }
+                else{
+                    Regist();
+                }
+
             }
         });
 

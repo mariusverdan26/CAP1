@@ -56,12 +56,13 @@ public class Login extends AppCompatActivity {
                 String mEmail = login_email_text_input.getText().toString().trim();
                 String mPass = login_password_text_input.getText().toString().trim();
 
-                if (!mEmail.isEmpty() || !mPass.isEmpty()){
-                    LogIn(mEmail, mPass);
-
+                if (mEmail.isEmpty() || mPass.isEmpty()){
+                    if (mEmail.isEmpty())
+                        login_email_text_input.setError("Please insert Email!");
+                    if (mPass.isEmpty())
+                        login_password_text_input.setError("Please insert Password!");
                 } else {
-                    login_email_text_input.setError("Please insert Email!");
-                    login_password_text_input.setError("Please insert Password!");
+                    LogIn(mEmail, mPass);
                 }
             }
         });
